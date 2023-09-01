@@ -18,19 +18,20 @@
   <meta name="author" content="qian kong">
   <meta name="keywords" content="浅空, 心迹, 日记, 随感, 学习笔记, 分享, 人生, 美好">
   
-    <meta name="description" content="写摘要">
+    <meta name="description" content="Nmap的安装与简单使用！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nmap介绍、安装及使用教程">
 <meta property="og:url" content="https://qiankong.eu.org/2023/08/27/Nmap%E4%BB%8B%E7%BB%8D%E3%80%81%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="浅空心迹">
-<meta property="og:description" content="写摘要">
+<meta property="og:description" content="Nmap的安装与简单使用！">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://qiankong.eu.org/2023/08/27/Nmap%E4%BB%8B%E7%BB%8D%E3%80%81%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20230829140149259.png">
 <meta property="og:image" content="https://qiankong.eu.org/2023/08/27/Nmap%E4%BB%8B%E7%BB%8D%E3%80%81%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20230829140216876.png">
 <meta property="article:published_time" content="2023-08-27T15:29:08.000Z">
-<meta property="article:modified_time" content="2023-08-29T14:17:55.571Z">
+<meta property="article:modified_time" content="2023-08-31T06:40:25.295Z">
 <meta property="article:author" content="qian kong">
-<meta property="article:tag" content="浅空, 心迹, 日记, 随感, 学习笔记, 分享, 人生, 美好">
+<meta property="article:tag" content="网络安全">
+<meta property="article:tag" content="渗透工具">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://qiankong.eu.org/2023/08/27/Nmap%E4%BB%8B%E7%BB%8D%E3%80%81%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20230829140149259.png">
   
@@ -254,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          575 字
+          1.8k 字
         
       </span>
     
@@ -265,7 +266,7 @@
         
         
         
-          5 分钟
+          16 分钟
         
       </span>
     
@@ -315,7 +316,7 @@
             
               <div class="markdown-body">
                 
-                <p>写摘要</p>
+                <p>Nmap的安装与简单使用！</p>
 <span id="more"></span>
 
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Nmap是一款开源、免费的网络探测、安全审计的工具。</p>
@@ -338,9 +339,10 @@
 <li><p>进入编译源代码界面查看安装命令</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vim">bzip2 -<span class="hljs-keyword">cd</span> <span class="hljs-keyword">nmap</span>-<span class="hljs-number">7.94</span>.tar.bz2 | tar xvf -<br><span class="hljs-keyword">cd</span> <span class="hljs-keyword">nmap</span>-<span class="hljs-number">7.94</span><br>./configure<br><span class="hljs-keyword">make</span><br>su root<br><span class="hljs-keyword">make</span> install<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>这里主要讲解命令行界面的使用。</p>
-<ol>
-<li><p>探测开放端口号，如果是域名，会先解析为IP</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="主机发现用法"><a href="#主机发现用法" class="headerlink" title="主机发现用法"></a>主机发现用法</h3><ol>
+<li><p>nmap 的参数 可以指定单个IP地址、CIDR表示的子网、IP范围或者主机名。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">nmap</span> <span class="hljs-number">10.0.0.1</span><br><span class="hljs-attribute">nmap</span> <span class="hljs-number">10.0.0.0</span>/<span class="hljs-number">24</span><br><span class="hljs-attribute">nmap</span> <span class="hljs-number">10.0.0.1</span>-<span class="hljs-number">254</span><br><span class="hljs-attribute">nmap</span> qiankong-PC<br></code></pre></td></tr></table></figure></li>
+<li><p>主机发现并探测开放端口号，如果是域名，会先解析为IP</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
 <img src="/2023/08/27/Nmap%E4%BB%8B%E7%BB%8D%E3%80%81%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20230829140149259.png" srcset="/img/loading.gif" lazyload class="" title="nmap scanme.nmap.org">
 </li>
@@ -350,11 +352,88 @@
 </li>
 <li><p>对于已知主机存活，或防火墙开启的机器，可以使用<code>-Pn</code>参数来停止探测前的ICMP请求。</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -Pn scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
-<p>通过<code>Wireshark</code>抓包，发现并没有相应的ICMP请求包。</p>
 </li>
 <li><p>nmap默认探测常见的1000个端口，有时不能满足工作需要。通过<code>-p</code>参数来指定端口范围</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">nmap</span> -p <span class="hljs-number">1</span>-<span class="hljs-number">1000</span> scanme.nmap.org<br></code></pre></td></tr></table></figure></li>
+<li><p>仅将指定的目标的IP列举出来，不进行主机发现。</p>
+</li>
 </ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -sL scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li><p>只进行主机发现，不进行主机扫描</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -<span class="hljs-keyword">sn</span> scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>执行TCP SYN Ping扫描</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -PS scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>执行TCP ACK Ping扫描</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -PA scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>执行UDP Ping扫描</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -PU scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>执行TCP SCTP Ping扫描。SCTP（Stream Control Transmission Protocol）是一种传输层协议，类似于TCP和UDP。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">nmap -PY<span class="hljs-selector-attr">[portlist]</span> scanme<span class="hljs-selector-class">.nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>使用 ICMP Echo 请求包发现主机。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -PE scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>使用 ICMP Timestamp 请求包发现主机。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -PP scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>使用 ICMP Netmask 请求包发现主机。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -PM scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>执行IP协议包探测</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -PO icmp,igmp scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>不进行DNS解析</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -n scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>总是进行DNS解析</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">nmap</span> -R scanme.<span class="hljs-keyword">nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>使用系统指定的DNS服务器</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">nnmap <span class="hljs-attr">--system-dns</span> scanme<span class="hljs-selector-class">.nmap</span>.org<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>追踪每个路由节点</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">nmap <span class="hljs-attr">--traceroute</span> scanme<span class="hljs-selector-class">.nmap</span>.org<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="端口扫描状态"><a href="#端口扫描状态" class="headerlink" title="端口扫描状态"></a>端口扫描状态</h3><ol>
+<li>open</li>
+</ol>
+<p>端口是开放的。</p>
+<ol>
+<li>closed</li>
+</ol>
+<p>端口是关闭的。</p>
+<ol>
+<li>filtered</li>
+</ol>
+<p>端口被防火墙IDS&#x2F;IPS屏蔽，无法确定其状态。</p>
+<ol>
+<li>unfiltered</li>
+</ol>
+<p>端口没有被屏蔽，但是否开放需要进一步确定。</p>
+<ol>
+<li>open|filtered</li>
+</ol>
+<p>端口是开放的或被屏蔽。</p>
+<ol>
+<li>closed|filtered</li>
+</ol>
+<p>端口是关闭的或被屏蔽。</p>
+<h4 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h4><ul>
+<li>-sS&#x2F;sT&#x2F;sA&#x2F;sW&#x2F;sM:指定使用 TCP SYN&#x2F;Connect()&#x2F;ACK&#x2F;Window&#x2F;Maimon scans的方式来对目标主机进行扫描。 </li>
+<li>-sU: 指定使用UDP扫描方式确定目标主机的UDP端口状况。 </li>
+<li>-sN&#x2F;sF&#x2F;sX: 指定使用TCP Null, FIN, and Xmas scans秘密扫描方式来协助探测对方的TCP端口状态。 </li>
+<li>–scanflags <flags>: 定制TCP包的flags。 </li>
+<li>-sI &lt;zombiehost[:probeport]&gt;: 指定使用idle scan方式来扫描目标主机（前提需要找到合适的zombie host）</li>
+<li>-sY&#x2F;sZ: 使用SCTP INIT&#x2F;COOKIE-ECHO来扫描SCTP协议端口的开放的情况。 </li>
+<li>-sO: 使用IP protocol 扫描确定目标机支持的协议类型。</li>
+<li>-b <FTP relay host>: 使用FTP bounce scan扫描方式</li>
+</ul>
 
                 
               </div>
@@ -363,6 +442,15 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="print-no-link">#网络安全</a>
+      
+        <a href="/tags/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/" class="print-no-link">#渗透工具</a>
+      
+    </div>
   
 </div>
 

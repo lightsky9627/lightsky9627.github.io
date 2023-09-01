@@ -26,9 +26,9 @@
 <meta property="og:description" content="Anaconda是开源Python和R发行版，旨在简化数据科学和机器学习的开发、部署和管理。它包括常用库、环境管理功能，通过Navigator和conda进行管理。安装简便，提供多环境支持，适用于数据分析、机器学习、科学计算。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-27T10:33:17.000Z">
-<meta property="article:modified_time" content="2023-08-27T10:56:22.822Z">
+<meta property="article:modified_time" content="2023-08-31T15:07:31.133Z">
 <meta property="article:author" content="qian kong">
-<meta property="article:tag" content="浅空, 心迹, 日记, 随感, 学习笔记, 分享, 人生, 美好">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          902 字
+          2.1k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          8 分钟
+          18 分钟
         
       </span>
     
@@ -337,7 +337,126 @@
 <li><p>1,000+开源库<br>如果日常工作或学习并不必要使用1,000多个库，那么可以考虑安装Miniconda。</p>
 </li>
 </ul>
-<h3 id="Anaconda、conda、pip、virtualenv的区别"><a href="#Anaconda、conda、pip、virtualenv的区别" class="headerlink" title="Anaconda、conda、pip、virtualenv的区别"></a>Anaconda、conda、pip、virtualenv的区别</h3><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="Anaconda的适用平台及安装条件"><a href="#Anaconda的适用平台及安装条件" class="headerlink" title="Anaconda的适用平台及安装条件"></a>Anaconda的适用平台及安装条件</h3><h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><ol>
+<h3 id="Anaconda、conda、pip、virtualenv的区别"><a href="#Anaconda、conda、pip、virtualenv的区别" class="headerlink" title="Anaconda、conda、pip、virtualenv的区别"></a>Anaconda、conda、pip、virtualenv的区别</h3><ol>
+<li><p>Anaconda<br>Anaconda是一个包含180+的科学包及其依赖项的发行版本。其包含的科学包包括：conda, numpy, scipy, ipython notebook等。</p>
+</li>
+<li><p>conda<br>conda是包及其依赖项和环境的管理工具。</p>
+</li>
+</ol>
+<ul>
+<li><p>适用语言：Python, R, Ruby, Lua, Scala, Java, JavaScript, C&#x2F;C++, FORTRAN。</p>
+</li>
+<li><p>适用平台：Windows, macOS, Linux</p>
+</li>
+<li><p>用途：</p>
+<ul>
+<li><p>快速安装、运行和升级包及其依赖项。</p>
+</li>
+<li><p>在计算机中便捷地创建、保存、加载和切换环境。</p>
+</li>
+</ul>
+</li>
+<li><p>conda为Python项目而创造，但可适用于上述的多种语言。</p>
+</li>
+<li><p>conda包和环境管理器包含于Anaconda的所有版本当中。</p>
+</li>
+</ul>
+<ol>
+<li>pip<br>pip是用于安装和管理软件包的包管理器。</li>
+</ol>
+<ul>
+<li><p>pip编写语言：Python。</p>
+</li>
+<li><p>Python中默认安装的版本：</p>
+<ul>
+<li><p>Python 2.7.9及后续版本：默认安装，命令为 pip</p>
+</li>
+<li><p>Python 3.4及后续版本：默认安装，命令为 pip3</p>
+</li>
+</ul>
+</li>
+<li><p>▪ pip名称的由来：pip采用的是递归缩写进行命名的。其名字被普遍认为来源于2处：</p>
+<ul>
+<li>“Pip installs Packages”（”pip安装包”）</li>
+<li>“Pip installs Python”（”pip安装Python”）</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>virtualenv</li>
+</ol>
+<p>virtualenv是用于创建一个独立的Python环境的工具。</p>
+<ul>
+<li>解决问题：<ul>
+<li>当一个程序需要使用Python 2.7版本，而另一个程序需要使用Python 3.6版本，如何同时使用这两个程序？如果将所有程序都安装在系统下的默认路径，如：&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages，当不小心升级了本不该升级的程序时，将会对其他的程序造成影响。</li>
+<li>如果想要安装程序并在程序运行时对其库或库的版本进行修改，都会导致程序的中断。</li>
+<li>在共享主机时，无法在全局 site-packages 目录中安装包。</li>
+</ul>
+</li>
+<li>virtualenv将会为它自己的安装目录创建一个环境，这并不与其他virtualenv环境共享库；同时也可以选择性地不连接已安装的全局库。</li>
+</ul>
+<ol>
+<li>pip 与 conda 比较</li>
+</ol>
+<blockquote>
+<p>依赖项检查</p>
+</blockquote>
+<ul>
+<li>pip<ul>
+<li>不一定会展示所需其他依赖包。</li>
+<li>不一定会展示所需其他依赖包。</li>
+</ul>
+</li>
+<li>conda<ul>
+<li>列出所需其他依赖包。</li>
+<li>安装包时自动安装其依赖项。</li>
+<li>可以便捷地在包的不同版本中自由切换。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>环境管理</p>
+</blockquote>
+<ul>
+<li>pip<ul>
+<li>维护多个环境难度较大。</li>
+</ul>
+</li>
+<li>conda<ul>
+<li>比较方便地在不同环境之间进行切换，环境管理较为简单。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>对系统自带Python的影响</p>
+</blockquote>
+<ul>
+<li>pip<ul>
+<li>在系统自带Python中包的更新&#x2F;回退版本&#x2F;卸载将影响其他程序。</li>
+</ul>
+</li>
+<li>conda<ul>
+<li>不会影响系统自带Python。<blockquote>
+<p>适用语言</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>pip<ul>
+<li>仅适用于Python。</li>
+</ul>
+</li>
+<li>conda<ul>
+<li>适用于Python, R, Ruby, Lua, Scala, Java, JavaScript, C&#x2F;C++, FORTRAN。<blockquote>
+<p>conda与pip、virtualenv的关系</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>conda结合了pip和virtualenv的功能。</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="Anaconda的适用平台及安装条件"><a href="#Anaconda的适用平台及安装条件" class="headerlink" title="Anaconda的适用平台及安装条件"></a>Anaconda的适用平台及安装条件</h3><p>图形化界面点点点就好</p>
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><ol>
 <li><p>查看存在的虚拟环境(法一)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda <span class="hljs-built_in">env</span> list<br></code></pre></td></tr></table></figure>
 </li>
@@ -382,6 +501,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+    </div>
   
 </div>
 
